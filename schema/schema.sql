@@ -10,12 +10,14 @@ CREATE TABLE inventory (
 );
 
 -- Create the users table with
-CREATE TABLE users ( 
   -- id that's primary key integer auto incrementing
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
   -- username that's a 100 char varchar and unique
-  username INT NOT NULL VARCHAR(100) NOT NULL unique,
   -- password that's a 200 char varchar
+
+
+CREATE TABLE users ( 
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+  username INT NOT NULL UNIQUE VARCHAR(100),
   password INT NOT NULL VARCHAR(200)
 )
 
