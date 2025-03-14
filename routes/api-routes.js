@@ -96,8 +96,12 @@ router.post('/user', async (req, res) => {
     return res.status(400).send('Username and password are required')
   }
   // hash the password using bcrypt.hash and use 10 salt rounds
-  
+  const hash = await bcrypt.hash(password, 20)
   // then insert the username and hashed password into the users table
+  await db.query(
+    `INSERT INTO users (username, password) VALUES (?, ?)`,
+    [username, hash]
+  )
   // and redirect the user to the /login page
 
   // if an error occurs with a code property equal to 'ER_DUP_ENTRY'
